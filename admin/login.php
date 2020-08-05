@@ -1,0 +1,49 @@
+
+<?php 
+include "db.php";
+?>
+
+<?php include 'includes/header.php';?>
+
+<?php
+if(isset($_POST['login'])){
+ $usname= $_POST['usname'];
+ $pass= $_POST['pass'];
+
+
+$query = "SELECT * FROM admin WHERE Usname='{$usname}'";
+$select_query=mysqli_query($connect,$query);
+if(!$select_query){
+
+
+	die("query failed".mysqli_error($connect));
+
+}
+
+
+while($row = mysqli_fetch_array($select_query))
+	{
+		 $db_id = $row['id'];
+		 $db_username = $row['usname'];
+		 $db_password = $row['pass'];
+	}
+if($usname !== $db_username && $pass !== $db_password){
+	  ;
+	header("Location:adminlog.php?login?login=char");
+
+
+	
+	}
+elseif($usname == $db_username && $pass == $db_password){
+	header("Location:index.php?login=success");
+	$_SESSION['usname']= $db_username;
+	$_SESSION['pass']= $db_password;
+ }
+ else
+ {
+
+ 	header("Location:adminlog.php?login=failed");
+ }
+}
+?>
+</script>
