@@ -1,4 +1,5 @@
 <?php 
+	session_start();
 	require 'admin/includes/db.php';
 
 	if(isset($_POST['pid'])){
@@ -38,5 +39,65 @@
 		$rows = $stmt->num_rows;
 
 		echo $rows;
+	}
+
+	if (isset($_GET['remove'])){
+		$id = $_GET['remove'];
+
+		$stmt = $connect->prepare("DELETE FROM cart WHERE id=?");
+		$stmt->bind_param("i",$id);
+		$stmt->execute();
+
+		$_SESSION['showAlert'] = 'block';
+		$_SESSION['message'] = 'Item removed from the cart!';
+		header('location:order-cart.php');
+	}
+
+	if(isset($_GET['clear'])){
+		$stmt = $connect->prepare("DELETE FROM cart");
+		$stmt->execute();
+
+		$_SESSION['showAlert'] = 'block';
+		$_SESSION['message'] = 'All items removed from the cart!';
+		header('location:order-cart.php');
+	}
+
+	if (isset($_POST['qty'])) {
+		$qty = $_POST['qty'];
+		$pid = $_POST['pid'];
+		$pprice = $_POST['pprice'];
+
+		$tprice = $qty * $pprice;
+
+		$stmt = $connect->prepare("UPDATE cart SET qty=?, total_price=? WHERE id=?");
+		$stmt->bind_param('isi',$qty,$tprice,$pid);
+		$stmt->execute();
+	}
+
+	if(isset($_POST['action']) && isset($_POST['action']) == 'order'){
+		$fname = $_POST['fname'];
+		$lname = $_POST['lname'];
+		$email = $_POST['email'];
+		$phone = $_POST['phone'];
+		$products = $_POST['products'];
+		$total = $_POST['total'];
+
+		$data = '';
+
+		$stmt = $connect->prepare("INSERT INTO orders (firstname,lastname,email,contact,products,amount_paid) VALUES(?,?,?,?,?,?)");
+		$stmt->bind_param('sssiss',$fname,$lname,$email,$phone,$products,$total);
+		$stmt->execute();
+		$data .= '<div class="text-center">
+						<h1 class="display-4 mt-2 text-danger">Thank You!</h1>
+						<h2 class="text-success">Your Order Is Placed Successfully!</h2>
+						<h4 class="bg-info text-light rounded p-2">Items Purchased : '.$products.'</h4>
+						<h4>Your First Name: '.$fname.'</h4>
+						<h4>Your Last Name: '.$lname.'</h4>
+						<h4>Your Email: '.$email.'</h4>
+						<h4>Your Phone Number: '.$phone.'</h4>
+						<h4>Total Amount Paid: '.number_format($total,2).'</h4>
+					</div>';
+
+		echo $data;
 	}
 ?>

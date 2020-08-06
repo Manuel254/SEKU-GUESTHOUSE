@@ -1,31 +1,5 @@
 <?php 
 include_once 'admin/includes/db.php';
-// session_start();
-// if (isset($_POST['add_to_cart'])) {
-//   if(isset($_SESSION["shopping_cart"])){
-//     $item_array_id = array_column($_SESSION["shopping_cart"], "item_id");
-//     if(!in_array($_GET["id"], $item_array_id)){
-//       $count = count($_SESSION["shopping_cart"]);
-//       $item_array = array(
-//         'item_id' => $_GET["id"],
-//         'item_name' => $_POST["hidden_name"],
-//         'item_price' => $_POST["hidden_price"],
-//         'item_quantity' => $_POST["quantity"]
-//       );
-//       $_SESSION["shopping_cart"][$count] = $item_array;
-//     }else{
-//         echo "<script>alert('Item Already Added To Cart')</script>";
-//       }
-//     }else{
-//       $item_array = array(
-//         'item_id' => $_GET["id"],
-//         'item_name' => $_POST["hidden_name"],
-//         'item_price' => $_POST["hidden_price"],
-//         'item_quantity' => $_POST["quantity"]
-//       );
-//       $_SESSION["shopping_cart"][0] = $item_array;
-//     }
-//   }
 ?>
 
 <!DOCTYPE html>
@@ -115,7 +89,6 @@ include_once 'admin/includes/db.php';
                       echo '<h6 class="card-title"><strong>'.$row['NAME_OF_FOOD'].'</strong></h6>';
                       echo '<p class="card-text">'.$row['DESCRIPTION'].'</p><br>';
                       echo '<p><strong>ksh. '.$row['PRICE'].'</strong></p>';
-                      echo '<span>Quantity: </span><input type="number" name="quantity" value="1" min="1">';
                   echo '</div>';
                     echo '</div>';
 

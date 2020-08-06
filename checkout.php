@@ -1,11 +1,19 @@
 <?php 
     include_once 'admin/includes/db.php';
-    session_start();
-    $grand_total = 0;
+    
+    $total = 0;
     $allItems = '';
     $items = array();
 
-    $sql = "SELECT CONCAT("
+    $sql = "SELECT CONCAT(product_name, '(',qty,')') AS ItemQty, total_price FROM cart";
+    $stmt = $connect->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while($row = $result->fetch_assoc()){
+        $total +=$row['total_price'];
+        $items[] = $row['ItemQty'];
+    }
+    $allItems = implode(", ", $items);
 ?>
 
 <!DOCTYPE html>
@@ -62,56 +70,43 @@
             </div>
           </nav>
 
-    <div class="form-style bg-light my-4">
-
-        <div class="header"><h2>SIGN UP FORM</h2></div>
-            <form action="#" method="POST" name="checkoutForm">
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col py-4">
-                            <label for="firstname"><sup class="text-danger">*</sup>First name</label>
-                            <input type="text" class="form-control" name="firstname" required>
-                        </div>
-
-                        <div class="col py-4">
-                            <label for="lastname"><sup class="text-danger">*</sup>Last name</label>
-                            <input type="text" class="form-control" name="lastname" required>
-                        </div>
-                    </div>
-                        <label for="Email"><sup class="text-danger">*</sup>Email</label>
-                        <input type="email" class="form-control my-4" name="email" required>
-                        <label for="Phoneno">Phone number</label>
-                        <input type="tel" class="form-control my-4" name="phone">
-                        <input class="btn btn-success signup-btn" type="submit" name="submit" value="Sign up">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 px-4 pb-4" id="order">
+                <h4 class="text-center text-success p-2">Complete your order!</h4>
+                <div class="jumbotron p-3 mb-2 text-center">
+                    <h6 class="lead"><b>Product(s) : </b><?= $allItems; ?></h6>
+                    <h5><b>Total Amount Payable : </b>Ksh. <?= number_format($total,2)?></h5>
                 </div>
-            </form>
+                <form action="" method="post" id="placeOrder">
+                    <input type="hidden" name="products" value="<?= $allItems; ?>">
+                    <input type="hidden" name="total" value="<?= $total; ?>">
+                    <div class="form-group">
+                        <input type="text" name="fname" class="form-control" placeholder="Enter First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="lname" class="form-control" placeholder="Enter Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Enter E-mail" required>
+                    </div><div class="form-group">
+                        <input type="tel" name="phone" class="form-control" placeholder="Enter Phone Number">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="submit" value="Place Order" class="btn btn-success btn-block" placeholder="Enter First Name" required>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
-        <?php
-            if (!$connect){
-                die('Database Connection failed!');
-        }else{
-            if(isset($_POST['submit'])){
-                $fname = $_POST['firstname'];
-                $lname = $_POST['lastname'];
-                $email = $_POST['email'];
-                $phoneno = $_POST['phone'];
+   <script src="https://kit.fontawesome.com/bf257a5746.js" crossorigin="anonymous"></script>
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-            $sql = "INSERT INTO checkout_details(firstname,lastname,email,contact) VALUES('$fname', '$lname', '$email', $phoneno)";
-            $result = mysqli_query($connect, $sql);
-
-            if ($result){
-                echo '<script>alert("Details Added Successfully!!");</script>';
-        }else{
-            echo '<script>alert("Details Not Added Successfully! Retry");</script>';
-        }
-        }
-    }
-        ?>
-
-    <script src="https://kit.fontawesome.com/bf257a5746.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin=anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ <script type="text/javascript" src="checkout_ajax.js"></script>
     </body>
 </html>
