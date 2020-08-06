@@ -96,17 +96,7 @@
       </form>
 
     <a href="order-cart.php" style="text-decoration: none;color:#000;">
-      <h5 align="right" class="mx-5"><i class="fas fa-shopping-cart text-success"></i>  Cart 
-            <?php 
-              if (isset($_SESSION["shopping_cart"])) {
-                $count = count($_SESSION["shopping_cart"]);
-                echo '<span class="rounded-circle bg-success px-2 text-white">'.$count.'</span>';
-              }else{
-                 echo '<span class="rounded-circle bg-success px-2 text-white">0</span>';
-              }
-              ?>
-       </h5>
-     </a>
+      <h5 align="right" class="mx-5"><i class="fas fa-shopping-cart text-success"></i>  Cart <span id="cart-item" class="rounded-circle bg-success px-2 text-white"></span></h5></a>
     </div>
     
     <h2 class="text-center">HOT BEVERAGES</h2>
@@ -120,27 +110,28 @@
                 echo '<div class="row">';
                 while($row=mysqli_fetch_assoc($sql)){
                   echo '<div class="col-lg-4 col-md-3 col-sm-12 my-1">';
-                  echo '<form action="sub-meal1.php?action=add&id='.$row['FOOD_ID'].'" method="POST">'; 
-                    echo '<div class="card shadow">';
+                  echo '<div class="card shadow">';
                         echo '<img src="admin/images/'.$row["IMAGES"].'" class="card-img-top" alt="Hot Beverages" width="300px" height="200px">';
-                  echo '<div class="card-body">';
+                    echo '<div class="card-body">';
                       echo '<h6 class="card-title"><strong>'.$row['NAME_OF_FOOD'].'</strong></h6>';
                       echo '<p class="card-text">'.$row['DESCRIPTION'].'</p><br>';
                       echo '<p><strong>ksh. '.$row['PRICE'].'</strong></p>';
                       echo '<span>Quantity: </span><input type="number" name="quantity" value="1" min="1">';
-                      // echo '<input type="hidden" name="hidden_name" value="'.$row['NAME_OF_FOOD'].'">';
-                      // echo '<input type="hidden" name="hidden_price" value="'.$row['PRICE'].'">';
-        
-                      echo '<form action="" class="form-submit">';
-                       echo '<input type="hidden" class="pid" value="'.$row['FOOD_ID'].'">';
-                        echo '<input type="hidden" class="pname" value="'.$row['NAME_OF_FOOD'].'">';
-                        echo '<input type="hidden" class="pprice" value="'.$row['PRICE'].'">';
-                        echo '<input type="hidden" class="pcode" value="'.$row['FOOD_CODE'].'">';
-                        echo '<button class="btn btn-success addItemBtn text-center my-2" name="add_to_cart"><i class="fas fa-shopping-cart"></i> Add to cart</button>';
+                  echo '</div>';
+                    echo '</div>';
+
+                  echo '<div class="card-footer">';
+                    echo '<form action="" class="form-submit">';
+                    ?>
+                              <input type="hidden" class="pid" value="<?= $row['FOOD_ID'] ?>">
+                              <input type="hidden" class="pname" value="<?= $row['NAME_OF_FOOD'] ?>">
+                              <input type="hidden" class="pprice" value="<?= $row['PRICE'] ?>">
+                              <input type="hidden" class="pcode" value="<?= $row['FOOD_CODE'] ?>">
+                              <button class="btn btn-success text-center my-2 addItemBtn" name="add_to_cart"><i class="fas fa-shopping-cart"></i> Add to cart</button>
+                    <?php
                       echo '</form>';
                       echo '</div>';
-                  echo '</div>';
-                  echo '</form>';
+                  
                     echo '</div>';
             }
             echo '</div>';
@@ -179,26 +170,6 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
- <script type="text/javascript">
-   $(document).ready(function(){
-      $(".addItemBtn").click(function(e){
-          e.preventDefault();
-          var $form = $(this).closest(".form-submit");
-          var pid = $form.find(".pid").val();
-          var pname = $form.find(".pname").val();
-          var pprice = $form.find(".pprice").val();
-          var pcode = $form.find(".pcode").val();
-
-          $.ajax({
-            url: 'action.php',
-            method: 'POST',
-            data: {pid:pid, pname:pname, pprice:pprice, pcode:pcode},
-            success:function(response){
-              $("#message").html(response);
-            }
-          });
-      });
-   });
- </script>
+ <script type="text/javascript" src="ajax_cart.js"></script>
   </body>
 </html>

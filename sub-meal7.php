@@ -1,31 +1,31 @@
 <?php 
 include_once 'admin/includes/db.php';
-session_start();
-if (isset($_POST['add_to_cart'])) {
-  if(isset($_SESSION["shopping_cart"])){
-    $item_array_id = array_column($_SESSION["shopping_cart"], "item_id");
-    if(!in_array($_GET["id"], $item_array_id)){
-      $count = count($_SESSION["shopping_cart"]);
-      $item_array = array(
-        'item_id' => $_GET["id"],
-        'item_name' => $_POST["hidden_name"],
-        'item_price' => $_POST["hidden_price"],
-        'item_quantity' => $_POST["quantity"]
-      );
-      $_SESSION["shopping_cart"][$count] = $item_array;
-    }else{
-        echo "<script>alert('Item Already Added To Cart')</script>";
-      }
-    }else{
-      $item_array = array(
-        'item_id' => $_GET["id"],
-        'item_name' => $_POST["hidden_name"],
-        'item_price' => $_POST["hidden_price"],
-        'item_quantity' => $_POST["quantity"]
-      );
-      $_SESSION["shopping_cart"][0] = $item_array;
-    }
-  }
+// session_start();
+// if (isset($_POST['add_to_cart'])) {
+//   if(isset($_SESSION["shopping_cart"])){
+//     $item_array_id = array_column($_SESSION["shopping_cart"], "item_id");
+//     if(!in_array($_GET["id"], $item_array_id)){
+//       $count = count($_SESSION["shopping_cart"]);
+//       $item_array = array(
+//         'item_id' => $_GET["id"],
+//         'item_name' => $_POST["hidden_name"],
+//         'item_price' => $_POST["hidden_price"],
+//         'item_quantity' => $_POST["quantity"]
+//       );
+//       $_SESSION["shopping_cart"][$count] = $item_array;
+//     }else{
+//         echo "<script>alert('Item Already Added To Cart')</script>";
+//       }
+//     }else{
+//       $item_array = array(
+//         'item_id' => $_GET["id"],
+//         'item_name' => $_POST["hidden_name"],
+//         'item_price' => $_POST["hidden_price"],
+//         'item_quantity' => $_POST["quantity"]
+//       );
+//       $_SESSION["shopping_cart"][0] = $item_array;
+//     }
+//   }
 ?>
 
 <!DOCTYPE html>
@@ -87,6 +87,7 @@ if (isset($_POST['add_to_cart'])) {
           </nav>
 
 <section class="container bg-light py-2">
+  <div id="message"></div>
        <div>
            <!-- Search bar -->
       <form action="search.php" method="POST" class="form-inline">
@@ -94,18 +95,8 @@ if (isset($_POST['add_to_cart'])) {
         <button class="btn btn-success my-sm-0" type="submit" name="submit">Search</button>
       </form>
 
-    <a href="order-cart.php" style="text-decoration: none;color:#000;">
-      <h5 align="right" class="mx-5"><i class="fas fa-shopping-cart text-success"></i>  Cart 
-            <?php 
-              if (isset($_SESSION["shopping_cart"])) {
-                $count = count($_SESSION["shopping_cart"]);
-                echo '<span class="rounded-circle bg-success px-2 text-white">'.$count.'</span>';
-              }else{
-                 echo '<span class="rounded-circle bg-success px-2 text-white">0</span>';
-              }
-              ?>
-       </h5>
-     </a>
+     <a href="order-cart.php" style="text-decoration: none;color:#000;">
+      <h5 align="right" class="mx-5"><i class="fas fa-shopping-cart text-success"></i>  Cart <span id="cart-item" class="rounded-circle bg-success px-2 text-white"></span></h5></a>
     </div>
     <h2 class="text-center">MAIN DISHES</h2>
       <!-- Meals available -->
@@ -118,20 +109,28 @@ if (isset($_POST['add_to_cart'])) {
                 echo '<div class="row">';
                 while($row=mysqli_fetch_assoc($sql)){
                   echo '<div class="col-lg-4 col-md-3 col-sm-12 my-1">';
-                  echo '<form action="sub-meal7.php?action=add&id='.$row['FOOD_ID'].'" method="POST">'; 
-                    echo '<div class="card shadow">';
+                  echo '<div class="card shadow">';
                         echo '<img src="admin/images/'.$row["IMAGES"].'" class="card-img-top" alt="Main Dishes" width="300px" height="200px">';
-                  echo '<div class="card-body">';
+                    echo '<div class="card-body">';
                       echo '<h6 class="card-title"><strong>'.$row['NAME_OF_FOOD'].'</strong></h6>';
                       echo '<p class="card-text">'.$row['DESCRIPTION'].'</p><br>';
                       echo '<p><strong>ksh. '.$row['PRICE'].'</strong></p>';
                       echo '<span>Quantity: </span><input type="number" name="quantity" value="1" min="1">';
-                      echo '<input type="hidden" name="hidden_name" value="'.$row['NAME_OF_FOOD'].'">';
-                      echo '<input type="hidden" name="hidden_price" value="'.$row['PRICE'].'">';
-                      echo '<a href="action.php?id='.$row['FOOD_ID'].'"class="btn btn-success text-center my-2" name="add_to_cart"><i class="fas fa-shopping-cart"></i> Add to cart</a>';
-                      echo '</div>';
                   echo '</div>';
-                  echo '</form>';
+                    echo '</div>';
+
+                  echo '<div class="card-footer">';
+                    echo '<form action="" class="form-submit">';
+                    ?>
+                              <input type="hidden" class="pid" value="<?= $row['FOOD_ID'] ?>">
+                              <input type="hidden" class="pname" value="<?= $row['NAME_OF_FOOD'] ?>">
+                              <input type="hidden" class="pprice" value="<?= $row['PRICE'] ?>">
+                              <input type="hidden" class="pcode" value="<?= $row['FOOD_CODE'] ?>">
+                              <button class="btn btn-success text-center my-2 addItemBtn" name="add_to_cart"><i class="fas fa-shopping-cart"></i> Add to cart</button>
+                    <?php
+                      echo '</form>';
+                      echo '</div>';
+                  
                     echo '</div>';
             }
             echo '</div>';
@@ -165,7 +164,11 @@ if (isset($_POST['add_to_cart'])) {
     </footer>
     <script src="https://kit.fontawesome.com/bf257a5746.js" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+ <script type="text/javascript" src="ajax_cart.js"></script>
   </body>
 </html>
