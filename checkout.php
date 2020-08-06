@@ -1,4 +1,12 @@
-<?php include 'admin/includes/db.php';?>
+<?php 
+    include_once 'admin/includes/db.php';
+    session_start();
+    $grand_total = 0;
+    $allItems = '';
+    $items = array();
+
+    $sql = "SELECT CONCAT("
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,6 +63,7 @@
           </nav>
 
     <div class="form-style bg-light my-4">
+
         <div class="header"><h2>SIGN UP FORM</h2></div>
             <form action="#" method="POST" name="checkoutForm">
                 <div class="form-group">

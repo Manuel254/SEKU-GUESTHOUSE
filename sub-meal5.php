@@ -128,7 +128,7 @@ if (isset($_POST['add_to_cart'])) {
                       echo '<span>Quantity: </span><input type="number" name="quantity" value="1" min="1">';
                       echo '<input type="hidden" name="hidden_name" value="'.$row['NAME_OF_FOOD'].'">';
                       echo '<input type="hidden" name="hidden_price" value="'.$row['PRICE'].'">';
-                      echo '<button type="submit" class="btn btn-success text-center my-2" name="add_to_cart"><i class="fas fa-shopping-cart"></i> Add to cart</button>';
+                     echo '<a href="action.php?id='.$row['FOOD_ID'].'"class="btn btn-success text-center my-2" name="add_to_cart"><i class="fas fa-shopping-cart"></i> Add to cart</a>';
                       echo '</div>';
                   echo '</div>';
                   echo '</form>';

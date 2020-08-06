@@ -1,31 +1,31 @@
 <?php 
-include_once 'admin/includes/db.php';
-session_start();
-if (isset($_POST['add_to_cart'])) {
-  if(isset($_SESSION["shopping_cart"])){
-    $item_array_id = array_column($_SESSION["shopping_cart"], "item_id");
-    if(!in_array($_GET["id"], $item_array_id)){
-      $count = count($_SESSION["shopping_cart"]);
-      $item_array = array(
-        'item_id' => $_GET["id"],
-        'item_name' => $_POST["hidden_name"],
-        'item_price' => $_POST["hidden_price"],
-        'item_quantity' => $_POST["quantity"]
-      );
-      $_SESSION["shopping_cart"][$count] = $item_array;
-    }else{
-        echo "<script>alert('Item Already Added To Cart')</script>";
-      }
-    }else{
-      $item_array = array(
-        'item_id' => $_GET["id"],
-        'item_name' => $_POST["hidden_name"],
-        'item_price' => $_POST["hidden_price"],
-        'item_quantity' => $_POST["quantity"]
-      );
-      $_SESSION["shopping_cart"][0] = $item_array;
-    }
-  }
+  include_once 'admin/includes/db.php';
+// session_start();
+// if (isset($_POST['add_to_cart'])) {
+//   if(isset($_SESSION["shopping_cart"])){
+//     $item_array_id = array_column($_SESSION["shopping_cart"], "item_id");
+//     if(!in_array($_GET["id"], $item_array_id)){
+//       $count = count($_SESSION["shopping_cart"]);
+//       $item_array = array(
+//         'item_id' => $_GET["id"],
+//         'item_name' => $_POST["hidden_name"],
+//         'item_price' => $_POST["hidden_price"],
+//         'item_quantity' => $_POST["quantity"]
+//       );
+//       $_SESSION["shopping_cart"][$count] = $item_array;
+//     }else{
+//         echo "<script>alert('Item Already Added To Cart')</script>";
+//       }
+//     }else{
+//       $item_array = array(
+//         'item_id' => $_GET["id"],
+//         'item_name' => $_POST["hidden_name"],
+//         'item_price' => $_POST["hidden_price"],
+//         'item_quantity' => $_POST["quantity"]
+//       );
+//       $_SESSION["shopping_cart"][0] = $item_array;
+//     }
+//   }
 ?>
 
 <!DOCTYPE html>
@@ -87,6 +87,7 @@ if (isset($_POST['add_to_cart'])) {
           </nav>
 
 <section class="container bg-light py-2">
+  <div id="message"></div>
        <div>
            <!-- Search bar -->
       <form action="search.php" method="POST" class="form-inline">
@@ -107,6 +108,7 @@ if (isset($_POST['add_to_cart'])) {
        </h5>
      </a>
     </div>
+    
     <h2 class="text-center">HOT BEVERAGES</h2>
       <!-- Meals available -->
               <?php
@@ -126,9 +128,16 @@ if (isset($_POST['add_to_cart'])) {
                       echo '<p class="card-text">'.$row['DESCRIPTION'].'</p><br>';
                       echo '<p><strong>ksh. '.$row['PRICE'].'</strong></p>';
                       echo '<span>Quantity: </span><input type="number" name="quantity" value="1" min="1">';
-                      echo '<input type="hidden" name="hidden_name" value="'.$row['NAME_OF_FOOD'].'">';
-                      echo '<input type="hidden" name="hidden_price" value="'.$row['PRICE'].'">';
-                      echo '<button type="submit" class="btn btn-success text-center my-2" name="add_to_cart"><i class="fas fa-shopping-cart"></i> Add to cart</button>';
+                      // echo '<input type="hidden" name="hidden_name" value="'.$row['NAME_OF_FOOD'].'">';
+                      // echo '<input type="hidden" name="hidden_price" value="'.$row['PRICE'].'">';
+        
+                      echo '<form action="" class="form-submit">';
+                       echo '<input type="hidden" class="pid" value="'.$row['FOOD_ID'].'">';
+                        echo '<input type="hidden" class="pname" value="'.$row['NAME_OF_FOOD'].'">';
+                        echo '<input type="hidden" class="pprice" value="'.$row['PRICE'].'">';
+                        echo '<input type="hidden" class="pcode" value="'.$row['FOOD_CODE'].'">';
+                        echo '<button class="btn btn-success addItemBtn text-center my-2" name="add_to_cart"><i class="fas fa-shopping-cart"></i> Add to cart</button>';
+                      echo '</form>';
                       echo '</div>';
                   echo '</div>';
                   echo '</form>';
@@ -165,7 +174,31 @@ if (isset($_POST['add_to_cart'])) {
     </footer>
    <script src="https://kit.fontawesome.com/bf257a5746.js" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+ <script type="text/javascript">
+   $(document).ready(function(){
+      $(".addItemBtn").click(function(e){
+          e.preventDefault();
+          var $form = $(this).closest(".form-submit");
+          var pid = $form.find(".pid").val();
+          var pname = $form.find(".pname").val();
+          var pprice = $form.find(".pprice").val();
+          var pcode = $form.find(".pcode").val();
+
+          $.ajax({
+            url: 'action.php',
+            method: 'POST',
+            data: {pid:pid, pname:pname, pprice:pprice, pcode:pcode},
+            success:function(response){
+              $("#message").html(response);
+            }
+          });
+      });
+   });
+ </script>
   </body>
 </html>

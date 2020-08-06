@@ -74,6 +74,7 @@
 							<th>PRICE</th>
 							<th>IMAGES</th>
 							<th>DESCRIPTION</th>
+							<th>PCODE</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -91,6 +92,7 @@
 										$price = $row['PRICE'];
 										$image = $row['IMAGES'];
 										$desc = $row['DESCRIPTION'];
+										$code = $row['FOOD_CODE'];
 
 										echo "<tr>";
 										echo "<td>{$id}</td>";
@@ -99,6 +101,7 @@
 										echo "<td>{$price}</td>";
 										echo "<td><img src='images/$image' width='50' height='50' style='align:center;'></td>";
 										echo "<td>{$desc}</td>";
+										echo "<td>{$code}</td>";
 										echo "<td><button type='button' class='btn btn-danger text-white'><a href='meals_menu.php?delete={$id}' style='color:#fff;text-decoration:none;'>Delete</a></button></td>";
 										echo "<td><button type='button' class='btn btn-success editbtn'>Edit</button></td>";
 										echo "</tr>";

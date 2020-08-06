@@ -58,6 +58,7 @@
 						die("Databse connection failed!!");
 					}else{
 						if(isset($_POST['submit'])){
+						$code = 'p'.strval(rand(10,1000));
 						$name = $_POST['foodname'];
 						$type = strtolower($_POST['foodtype']);
 						$price =$_POST['foodprice'];
@@ -68,7 +69,8 @@
 
 						move_uploaded_file($file_temp, $folder.$file_name);
 
-						$sql = "INSERT INTO menu (NAME_OF_FOOD,CAT_OF_FOOD,PRICE,IMAGES,DESCRIPTION) VALUES('$name','$type',$price,'$file_name','$desc')";
+
+						$sql = "INSERT INTO menu (NAME_OF_FOOD,CAT_OF_FOOD,PRICE,IMAGES,DESCRIPTION,FOOD_CODE) VALUES('$name','$type',$price,'$file_name','$desc','$code')";
 						$result = mysqli_query($connect,$sql);
 
 						if(!$result){
