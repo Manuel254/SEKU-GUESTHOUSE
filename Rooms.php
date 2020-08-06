@@ -40,15 +40,6 @@
                             <a class="nav-item nav-link active" href="Rooms.php">ROOMS <span class="sr-only">(current)</span></a>
                             <a class="nav-item nav-link" href="contacts.php">CONTACTS</a>
                             <a class="nav-item nav-link" href="admin/adminlog.php">ADMIN</a>
-                <div class="dropdown show">
-                <a class="dropdown-toggle nav-item nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    USERS
-                </a>
-                <div class="dropdown-menu dropdown-menu-right bg-success" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="signup.php" >Sign up</a>
-                    <a class="dropdown-item" href="login.php">Login</a>
-                </div>
-                </div>
                         </div>
                     </div>
                 </nav>

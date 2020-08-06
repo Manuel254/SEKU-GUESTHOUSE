@@ -45,24 +45,11 @@
                 <a class="nav-item nav-link" href="Rooms.php">ROOMS</a>
                 <a class="nav-item nav-link" href="contacts.php">CONTACTS</a>
                 <a class="nav-item nav-link" href="admin/adminlog.php">ADMIN</a>
-                <div class="dropdown show">
-                <a class="dropdown-toggle nav-item nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    USERS
-                </a>
-                <div class="dropdown-menu dropdown-menu-right bg-success" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="signup.php" >Sign up</a>
-                    <a class="dropdown-item" href="login.php">Login</a>
-                </div>
-                </div>
               </div>
             </div>
           </nav>
 
         <div>
-        
-        
-        
-        
     <body>
         <div class="container-content bg-white">
         <div class="headtext"><h1>About us</h1>

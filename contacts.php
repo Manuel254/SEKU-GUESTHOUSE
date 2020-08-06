@@ -46,15 +46,6 @@
                 <a class="nav-item nav-link" href="Rooms.php">ROOMS</a>
                 <a class="nav-item nav-link active" href="contacts.php">CONTACTS</a>
                 <a class="nav-item nav-link" href="admin/adminlog.php">ADMIN</a>
-				<div class="dropdown show">
-				<a class="dropdown-toggle nav-item nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					USERS
-				</a>
-				<div class="dropdown-menu dropdown-menu-right bg-success" aria-labelledby="dropdownMenuLink">
-					<a class="dropdown-item" href="signup.php" >Sign up</a>
-					<a class="dropdown-item" href="login.php">Login</a>
-				</div>
-				</div>
               </div>
             </div>
           </nav>
@@ -80,18 +71,15 @@
 							<div class="control-group form-group">
 								<label>Full Name:</label>
 								<div class="input-group input-group-lg">
-								<span class="input-group-addon" id="addon"><i class="fas fa-user fa-1x cust"></i></span>
                         		<input type="text" class="form-control"aria-describedby="addon"name="name" id="name" required >
 							</div>
 						</div>	
                     		<div class="control-group form-group">
 								<label>Phone Number:</label>
-								
-                        		<input type="tel" class="form-control" name="phone" id="phone" required >
+                        		<input type="tel" class="form-control" name="phone" id="phone" required>
                     		</div>
                     		<div class="control-group form-group">
 								<label>Email Address:</label>
-								
                         		<input type="email" class="form-control" name="email" id="email" required >
                     		</div>
                     		<div class="control-group form-group">
