@@ -1,5 +1,5 @@
-<?php 
-include_once 'admin/includes/db.php';
+<?php
+		include_once 'admin/includes/db.php';
 ?>
 
 <!DOCTYPE html>
@@ -12,11 +12,11 @@ include_once 'admin/includes/db.php';
         <link rel="stylesheet" href="css/meals.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
-      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-  
+	    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	
     </head>
         <!-- header content -->
-  <div class="container bg-white">
+	<div class="container bg-white">
             <div class="text-center " mr-5>
                 
         <img src="images\Sekulogo.png" height=100px/>
@@ -32,7 +32,7 @@ include_once 'admin/includes/db.php';
             <a class="navbar-brand" href="#">
                 <i class="fab fa-facebook-square"></i>
                 <i class="fab fa-twitter"></i>
-                <i class="fab fa-snapchat"></i>
+                <i class="fab fa-linkedin"></i>
                 <i class="fab fa-google-plus-g"></i>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" title="menu" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +51,7 @@ include_once 'admin/includes/db.php';
             </div>
           </nav>
 
-<section class="container bg-light py-2">
+<section class="container bg-light py-2" id="result">
   <div id="message"></div>
        <div>
            <!-- Search bar -->
@@ -60,73 +60,71 @@ include_once 'admin/includes/db.php';
         <button class="btn btn-success my-sm-0" type="submit" name="search">Search</button>
       </form>
 
-     <a href="order-cart.php" style="text-decoration: none;color:#000;">
+    <a href="order-cart.php" style="text-decoration: none;color:#000;">
       <h5 align="right" class="mx-5"><i class="fas fa-shopping-cart text-success"></i>  Cart <span id="cart-item" class="rounded-circle bg-success px-2 text-white"></span></h5></a>
     </div>
-    <h2 class="text-center">MAIN DISHES</h2>
-      <!-- Meals available -->
-              <?php
-                if (!$connect){
-                die("Database connection failed!");
-              }else{
-                $query = 'SELECT * FROM menu where CAT_OF_FOOD="main dishes"';
-                $sql = mysqli_query($connect,$query);
-                echo '<div class="row">';
-                while($row=mysqli_fetch_assoc($sql)){
-                  echo '<div class="col-lg-4 col-md-3 col-sm-12 my-1">';
-                  echo '<div class="card shadow">';
-                        echo '<img src="admin/images/'.$row["IMAGES"].'" class="card-img-top" alt="Main Dishes" width="300px" height="200px">';
-                    echo '<div class="card-body">';
-                      echo '<h6 class="card-title"><strong>'.$row['NAME_OF_FOOD'].'</strong></h6>';
-                      echo '<p class="card-text">'.$row['DESCRIPTION'].'</p><br>';
-                      echo '<p><strong>ksh. '.$row['PRICE'].'</strong></p>';
-                  echo '</div>';
-                    echo '</div>';
+    
 
-                  echo '<div class="card-footer">';
-                    echo '<form action="" class="form-submit">';
-                    ?>
-                              <input type="hidden" class="pid" value="<?= $row['FOOD_ID'] ?>">
-                              <input type="hidden" class="pname" value="<?= $row['NAME_OF_FOOD'] ?>">
-                              <input type="hidden" class="pprice" value="<?= $row['PRICE'] ?>">
-                              <input type="hidden" class="pcode" value="<?= $row['FOOD_CODE'] ?>">
-                              <button class="btn btn-success text-center my-2 addItemBtn" name="add_to_cart"><i class="fas fa-shopping-cart"></i> Add to cart</button>
-                    <?php
-                      echo '</form>';
-                      echo '</div>';
-                  
-                    echo '</div>';
-            }
-            echo '</div>';
-          }
+		<?php 
+		  if (isset($_POST['search'])) {
+		  		$query = mysqli_query($connect,"SELECT * FROM menu WHERE NAME_OF_FOOD LIKE '%".$_POST['q']."%'");
+		  		$num_rows = mysqli_num_rows($query);
+		  		echo '<div class="row">';
+		  		while($row = mysqli_fetch_assoc($query)){
+				  			echo '<div class="col-lg-4 col-md-3 col-sm-12 my-1">';
+		                  echo '<div class="card shadow">';
+		                        echo '<img src="admin/images/'.$row["IMAGES"].'" class="card-img-top" alt="Hot Beverages" width="300px" height="200px">';
+		                    echo '<div class="card-body">';
+		                      echo '<h6 class="card-title"><strong>'.$row['NAME_OF_FOOD'].'</strong></h6>';
+		                      echo '<p class="card-text">'.$row['DESCRIPTION'].'</p><br>';
+		                      echo '<p><strong>ksh. '.$row['PRICE'].'</strong></p>';
+		                  echo '</div>';
+		                    echo '</div>';
+
+		                  echo '<div class="card-footer">';
+		                    echo '<form action="" class="form-submit">';
+		                    ?>
+		                              <input type="hidden" class="pid" value="<?= $row['FOOD_ID'] ?>">
+		                              <input type="hidden" class="pname" value="<?= $row['NAME_OF_FOOD'] ?>">
+		                              <input type="hidden" class="pprice" value="<?= $row['PRICE'] ?>">
+		                              <input type="hidden" class="pcode" value="<?= $row['FOOD_CODE'] ?>">
+		                              <button class="btn btn-success text-center my-2 addItemBtn" name="add_to_cart"><i class="fas fa-shopping-cart"></i> Add to cart</button>
+		                    <?php
+		                      echo '</form>';
+		                      echo '</div>';
+		                  
+		                    echo '</div>';
+		            }
+		            echo '</div>';
+		          }
         ?>
         <span><a href="meals.php" class="btn btn-success my-2">Back</a></span>
       </section>
     <!-- Footer -->
     <footer>
         <div class="content justify-content-center">
-  <div class="row">
-  <div class="col-lg-6 col-md-6">
-  
-  <h5>CONTACTS</h5>
-  <p><i class="fas fa-home"></i>Kwa Vonza,kitui,P.O. Box 170-90200</p>
-  <p><i class="fas fa-phone-square-alt"></i>Tel:+254702598123</p>
-  <p><i class="fas fa-envelope"></i>info@sekuguesthouse</p>
-  </div>
+	<div class="row">
+	<div class="col-lg-6 col-md-6">
+	
+	<h5>CONTACTS</h5>
+	<p><i class="fas fa-home"></i>Kwa Vonza,kitui,P.O. Box 170-90200</p>
+	<p><i class="fas fa-phone-square-alt"></i>Tel:+254702598123</p>
+	<p><i class="fas fa-envelope"></i>info@sekuguesthouse</p>
+	</div>
 <div class="col-lg-6 col-md-6">
-  <h5>STAY IN TOUCH</h5>
-  <i class="fab fa-facebook"></i>
-  <i class="fab fa-twitter"></i>
-  <i class="fab fa-snapchat"></i><br>
-  <input type="email" placeholder="Subscribe for updates"><button class="btn btn-success">subscribe</button>
-  </div>
-  </div>
-  <h2>SEKU GUEST HOUSE,COPYRIGHT &copy;2020</h2>
-  </div>
-  
+	<h5>STAY IN TOUCH</h5>
+	<i class="fab fa-facebook"></i>
+	<i class="fab fa-twitter"></i>
+	<i class="fab fa-snapchat"></i><br>
+	<input type="email" placeholder="Subscribe for updates"><button class="btn btn-success">subscribe</button>
+	</div>
+	</div>
+	<h2>SEKU GUEST HOUSE,COPYRIGHT &copy;2020</h2>
+	</div>
+	
       </div>
     </footer>
-    <script src="https://kit.fontawesome.com/bf257a5746.js" crossorigin="anonymous"></script>
+   <script src="https://kit.fontawesome.com/bf257a5746.js" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
    <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

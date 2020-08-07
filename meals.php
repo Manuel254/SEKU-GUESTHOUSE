@@ -72,8 +72,8 @@ session_start();
 
       <!-- Search bar -->
       <form action="search.php" method="POST" class="form-inline" style="display: inline;">
-        <input class="form-control mr-sm-2 ml-sm-3" type="text" name="search" placeholder="Search for food..." aria-label="Search">
-        <button class="btn btn-success my-sm-0" type="submit" name="submit">Search</button>
+        <input class="form-control mr-sm-2 ml-sm-3" type="text" name="q" placeholder="Search for food..." aria-label="Search">
+        <button class="btn btn-success my-sm-0" type="submit" name="search">Search</button>
       </form>
 
     <a href="order-cart.php" style="text-decoration: none;color:#000;">
