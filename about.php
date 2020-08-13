@@ -73,8 +73,6 @@
                             <br>In our services we ensure equality,comfortability,and satisfaction of all our customers a good place to stay
                             We offer services to every race and therefore if you are worried about the issue with race then in seku guest house that is solved.<br>
                             <br>
-
-
                         </p>
                     </div>
                 </div>

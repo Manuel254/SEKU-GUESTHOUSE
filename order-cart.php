@@ -7,7 +7,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial scale=1.0">
         <meta http-equiv="X-UA compatible" content="i.e=edge">
-        <title>SEKU GUEST HOUSE | CART</title>
+        <title>SEKU GUEST HOUSE | MEALS</title>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
       <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
