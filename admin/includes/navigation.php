@@ -25,7 +25,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['usname']?><b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a href="./profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
                         </li>
                        
                         <li class="divider"></li>
@@ -41,16 +41,19 @@
                     <li class="active">
                             <img src="../admin/images/admin.jpg" height=60>
                                <span>Adminstrator</span>
-                        <a href="index.php"><i class="fa fa-home "></i>Home</a>
+                        <a href="./index.php"><i class="fa fa-home "></i>Home</a>
                     </li>
                     <li>
                     <a href="javascript:;" data-toggle="collapse" data-target="#rooms"><span class="glyphicon glyphicon-bed" area-hidden="true"></span>Rooms</a>
                         <ul id="rooms" class="collapse">
                             <li>
-                                <a href="#">Rooms</a>
+                                <a href="./addroom.php">Add Room</a>
                             </li>
                             <li>
-                                <a href="adminrooms.php">Bookings</a>
+                                <a href="./show_room_cat.php">Show All Rooms</a>
+                            </li>
+                            <li>
+                                <a href="./show_all_room.php">Show All Booked Rooms</a>
                             </li>
                         </ul>
                     </li>
@@ -58,21 +61,21 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#meals"><i class="fa fa-cutlery"></i>Meals
                         <ul id="meals" class="collapse">
                             <li>
-                                <a href="meals_menu.php">Meals menu</a>
+                                <a href="./meals_menu.php">Meals menu</a>
                             </li>
                             <li>
-                                <a href="orders.php">Orders</a>
+                                <a href="./orders.php">Orders</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                    <a href="admincontacts.php"><i class="fa fa-phone"></i>Contacts</a>
+                    <a href="./admincontacts.php"><i class="fa fa-phone"></i>Contacts</a>
                     </li>
                      <li>
-                    <a href="adminaccounts.php"><i class="fa fa-file-text"></i>Account</a>
+                    <a href="./adminaccounts.php"><i class="fa fa-file-text"></i>Account</a>
                     </li>
                      <li>
-                    <a href="profile.php"><i class="fa fa-user"></i>  Profile</a>
+                    <a href="./profile.php"><i class="fa fa-user"></i>  Profile</a>
                     </li>
 
                 </ul>

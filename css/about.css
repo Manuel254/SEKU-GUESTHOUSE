@@ -33,7 +33,7 @@ h2{
 }
 .container-content{
     display:grid;
-    grid-template-columns:60% 40%;
+    grid-template-columns:56% 40%;
     padding-left:20px;
     grid-column-gap:10px;
     font-family: Georgia, 'Times New Roman', Times, serif;

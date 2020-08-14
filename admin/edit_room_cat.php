@@ -94,7 +94,7 @@ if(isset($_REQUEST[ 'submit']))
 
                <br>
                 <div id="click_here">
-                    <a href="../admin.php">Back to Admin Panel</a>
+                    <a href="index.php">Back to Admin Panel</a>
                 </div>
 
 

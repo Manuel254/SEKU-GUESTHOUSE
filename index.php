@@ -275,7 +275,7 @@
 				</div>
 				</section>
 
-
+			</div>
 			</div>
 			<footer>
 				<div class="content justify-content-center">
@@ -299,6 +299,7 @@
 				</div>
 				<h3>SEKU GUEST HOUSE,COPYRIGHT &copy;2020</h3>
 			</footer>
+		</div>
 			<!-- javascript plugins -->
 
 			<script src="https://kit.fontawesome.com/bf257a5746.js" crossorigin="anonymous"></script>
