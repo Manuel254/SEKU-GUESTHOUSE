@@ -83,7 +83,7 @@
 								$menutable = mysqli_query($connect,$query);
 
 								if(!$menutable){
-									die("Query Failed" . mysql_error());
+									die("Query Failed" . mysqli_error());
 								}else{
 									while ($row = mysqli_fetch_assoc($menutable)){
 										$id = $row['FOOD_ID'];

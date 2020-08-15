@@ -81,11 +81,11 @@
 		$phone = $_POST['phone'];
 		$products = $_POST['products'];
 		$total = $_POST['total'];
-
+		$status = 'Not confirmed';
 		$data = '';
 
-		$stmt = $connect->prepare("INSERT INTO orders (firstname,lastname,email,contact,products,amount_paid) VALUES(?,?,?,?,?,?)");
-		$stmt->bind_param('sssiss',$fname,$lname,$email,$phone,$products,$total);
+		$stmt = $connect->prepare("INSERT INTO orders (firstname,lastname,email,contact,products,amount_paid,status) VALUES(?,?,?,?,?,?,?)");
+		$stmt->bind_param('sssisss',$fname,$lname,$email,$phone,$products,$total,$status);
 		$stmt->execute();
 		$data .= '<div class="text-center">
 						<h1 class="display-4 mt-2 text-danger">Thank You!</h1>

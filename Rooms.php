@@ -41,7 +41,7 @@
                     <img src="images\Sekulogo.png" height=100px/>
                     <div class="text-success py-3">
                         <h2 class="h1 heading-4">SEKU GUEST HOUSE</h2>
-                    </div class="bg-primary">
+                    </div>
                 </div>       
             </header>
         <!-- navigation-standard menu -->
@@ -102,11 +102,12 @@
                             <div class='col-md-6 well'>
                                 <h4>".$row['roomname']."</h4><hr>
                                 <h6>No of Beds: ".$row['no_bed']." ".$row['bedtype']." bed.</h6>
+                                <h6>Available Rooms: " . $row['available'] . "</h6>
                                 <h6>Facilities: ".$row['facility']."</h6>
                                 <h6>Price: ".$row['price']." tk/night.</h6>
                             </div>
                             <div class='col-md-3'>
-                                <a href='./booknow.php?roomname=".$row['roomname']."'><button class='btn btn-primary button'>Book Now</button> </a>
+                                <a href='./booknow.php?roomname=".$row['roomname']."'><button class='btn btn-success button'>Book Now</button> </a>
                             </div>   
                             </div>
                             

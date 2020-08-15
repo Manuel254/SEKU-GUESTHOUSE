@@ -17,7 +17,6 @@
             
             public function add_room($roomname, $room_qnty, $no_bed, $bedtype,$facility,$price)
             {
-                
                     $available=$room_qnty;
                     $booked=0;
                     
@@ -70,7 +69,7 @@
                          $send=mysqli_query($this->db,$sql2);
                         if($send)
                         {
-                            $result="Your Room has been booked!!";
+                            $result="Your have Booked a room Successfully!!";
                         }
                     }
                     else                       
@@ -99,7 +98,7 @@
                         }
                         else
                         {
-                            $result="Sorry, Internel Error";
+                            $result="Sorry, Internal Error";
                         }
                     
                 
@@ -139,7 +138,7 @@
                         }
                         else
                         {
-                            $result="Sorry, Internel Error";
+                            $result="Sorry, Internal Error";
                         }
   
                     
