@@ -65,7 +65,8 @@
 				?>
 
 				<h4 class="text-center"><strong>MENU</strong></h4>
-				<table class="table table-bordered table-hover table-sm table-responsive-sm table-responsive-md table-responsive-lg">
+			<div class="table-responsive">
+				<table class="table table-bordered table-hover">
 					<thead class="thead-light">
 						<tr>
 							<th>#</th>
@@ -124,24 +125,14 @@
 						?>
 					</tbody>
 				</table>
+			</div>
 				<nav arial-label="Page navigation">
 					<ul class="pagination">
-						<li>
-							<a href="#" arial-label="Previous">
-								<span aria-hidden="true">&laquo;Previous</span>
-							</a>
-						</li>
 						<?php
 							for($i = 1; $i <= $number_of_pages; $i++){
 								echo "<li><a href='meals_menu.php?page={$i}'>{$i}</a></li>";
 							}
 						?>
-						
-						<li>
-						<a href="#" aria-label="Next">
-							<span aria-hidden="true">Next&raquo;</span>
-						</a>
-					</li>
 					</ul>
 				</nav>
 				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#foodadd">Add Item</button> 

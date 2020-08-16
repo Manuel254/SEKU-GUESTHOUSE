@@ -1,4 +1,4 @@
-<h4 class="text-center text-danger">SEKU GUEST HOUSE,COPYRIGHT &copy;2020</h4>
+<h4 class="text-danger text-center">SEKU GUEST HOUSE,COPYRIGHT &copy;2020</h4>
 <!-- jQuery -->
     <script src="js/jquery.js"></script>
 

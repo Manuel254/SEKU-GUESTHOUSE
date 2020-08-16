@@ -10,9 +10,7 @@
                     <div class="col-lg-12">
                         <h2 class="page-header">
                             <img src="images/Sekulogo.png" height=70>
-                                WELCOME
-                            <small class="text-success"><?php echo strtoupper($_SESSION['usname'])?></small>
-                               TO THE ADMIN PANEL
+                            <h4>WELCOME <strong><?php echo strtoupper($_SESSION['usname'])?></strong> TO THE ADMIN PANEL</h4>
                             </h2>
                         <ol class="breadcrumb">
                             <li>

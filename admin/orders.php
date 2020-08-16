@@ -27,8 +27,8 @@
                 <?php
                     $sql = 'SELECT * FROM orders';
                     $result = mysqli_query($connect, $sql);
-                    
-                    echo '<table class="table table-bordered table-hover table-sm table-responsive-sm table-responsive-md table-responsive-lg">';
+                    echo '<div class="table-responsive">';
+                    echo '<table class="table table-bordered table-hover">';
                         echo'<thead class="thead-light">';
                             echo '<tr>';
                                 echo '<th>Order ID</th>';
@@ -62,11 +62,12 @@
                                 echo "<td>Ksh. {$amount}</td>";
                                 echo "<td>{$status}</td>";
                                 echo "<td><a href='orders.php?confirm={$id}' <button class='btn btn-primary confirm'> <i class='fa fa-edit'></i>Confirm</button></td>";
-                                echo "<td><button type='button' class='btn btn-danger text-white delete'><a href='orders.php?delete={$id}' style='color:#fff;text-decoration:none;'>Delete</a></button></td>";
+                                echo "<td><button type='button' class='btn btn-danger text-white delete badge-pill'><a href='orders.php?delete={$id}' style='color:#fff;text-decoration:none;'>Delete</a></button></td>";
                             echo '</tr>';
                     }
                         echo '</tbody>';
                     echo '</table>';
+                    echo '</div>';
 
                     // Delete data from database
                         if(!$connect){
