@@ -59,12 +59,34 @@
                                 echo "<td>{$email}</td>";
                                 echo "<td>{$contact}</td>";
                                 echo "<td>{$items}</td>";
-                                echo "<td>{$amount}</td>";
+                                echo "<td>Ksh. {$amount}</td>";
                                 echo "<td>{$status}</td>";
+                                echo "<td><a href='orders.php?confirm={$id}' <button class='btn btn-primary confirm'> <i class='fa fa-edit'></i>Confirm</button></td>";
+                                echo "<td><button type='button' class='btn btn-danger text-white delete'><a href='orders.php?delete={$id}' style='color:#fff;text-decoration:none;'>Delete</a></button></td>";
                             echo '</tr>';
                     }
                         echo '</tbody>';
-                    echo '</table>'
+                    echo '</table>';
+
+                    // Delete data from database
+                        if(!$connect){
+                            die("Database connection failed!!");
+                        }else{
+                            if (isset($_GET['delete'])) {
+                                $id = $_GET['delete'];
+
+                                $query = "DELETE FROM orders WHERE id = {$id}";
+                                $delete_query = mysqli_query($connect,$query);
+                        }
+
+                        }
+
+                        if (isset($_GET['confirm'])) {
+                            $id = $_GET['confirm'];
+
+                            $query = "UPDATE orders SET status='Confirmed'WHERE id=$id";
+                            $update_contact_query = mysqli_query($connect,$query);
+                        }
                 ?>
                
 

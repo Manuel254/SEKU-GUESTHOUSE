@@ -93,7 +93,7 @@
                         <input type="tel" name="phone" class="form-control" placeholder="Enter Phone Number">
                     </div>
                     <div class="form-group">
-                        <input type="submit" name="submit" value="Place Order" class="btn btn-success btn-block" placeholder="Enter First Name" required>
+                        <input type="submit" name="submit" value="Place Order" class="btn btn-success btn-block" required>
                     </div>
                 </form>
             </div>

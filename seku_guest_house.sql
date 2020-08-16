@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 06, 2020 at 04:23 PM
+-- Generation Time: Aug 16, 2020 at 07:15 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -141,8 +141,78 @@ CREATE TABLE `orders` (
   `email` varchar(100) NOT NULL,
   `contact` int(10) NOT NULL,
   `products` varchar(255) NOT NULL,
-  `amount_paid` varchar(100) NOT NULL
+  `amount_paid` varchar(100) NOT NULL,
+  `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rooms`
+--
+
+CREATE TABLE `rooms` (
+  `room_id` int(200) NOT NULL,
+  `room_cat` text NOT NULL,
+  `checkin` date NOT NULL,
+  `checkout` date NOT NULL,
+  `name` text NOT NULL,
+  `phone` int(100) NOT NULL,
+  `book` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `rooms`
+--
+
+INSERT INTO `rooms` (`room_id`, `room_cat`, `checkin`, `checkout`, `name`, `phone`, `book`) VALUES
+(1, 'Board Room', '0000-00-00', '0000-00-00', '', 0, 'false'),
+(2, 'Board Room', '0000-00-00', '0000-00-00', '', 0, 'false'),
+(3, 'Executive Room', '0000-00-00', '0000-00-00', '', 0, 'false'),
+(4, 'Executive Room', '0000-00-00', '0000-00-00', '', 0, 'false'),
+(5, 'Executive Room', '0000-00-00', '0000-00-00', '', 0, 'false'),
+(6, 'Executive Room', '0000-00-00', '0000-00-00', '', 0, 'false'),
+(7, 'Executive Room', '0000-00-00', '0000-00-00', '', 0, 'false'),
+(8, 'Normal Room', '2020-08-15', '2020-09-15', 'Immanuel Ngumbau Kituku', 703103690, 'true'),
+(9, 'Normal Room', '2020-08-15', '2020-09-15', 'Kituku', 2147483647, 'true'),
+(10, 'Normal Room', '2020-08-15', '2020-09-15', 'Kituku', 2147483647, 'true'),
+(21, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
+(22, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
+(23, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
+(24, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
+(25, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
+(26, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
+(27, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
+(28, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
+(29, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
+(30, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `room_category`
+--
+
+CREATE TABLE `room_category` (
+  `roomname` text NOT NULL,
+  `room_qnty` int(11) NOT NULL,
+  `available` int(11) NOT NULL,
+  `booked` int(11) NOT NULL,
+  `no_bed` int(11) NOT NULL,
+  `bedtype` text NOT NULL,
+  `facility` text NOT NULL,
+  `price` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `room_category`
+--
+
+INSERT INTO `room_category` (`roomname`, `room_qnty`, `available`, `booked`, `no_bed`, `bedtype`, `facility`, `price`) VALUES
+('Board Room', 2, 2, 0, 0, 'none', 'WiFi, Tables, and Chairs', 1000),
+('Executive Room', 5, 5, 0, 1, 'single', 'TV, WiFi, Newspaper.', 2500),
+('Normal Room', 3, 3, 0, 1, 'none', 'TV, WiFi', 1700),
+('Rental Rooms', 10, 10, 0, 1, 'single', 'WiFi, Hot shower', 200);
 
 --
 -- Indexes for dumped tables
@@ -179,6 +249,18 @@ ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `rooms`
+--
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`room_id`);
+
+--
+-- Indexes for table `room_category`
+--
+ALTER TABLE `room_category`
+  ADD PRIMARY KEY (`roomname`(100));
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -211,6 +293,12 @@ ALTER TABLE `menu`
 --
 ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `rooms`
+--
+ALTER TABLE `rooms`
+  MODIFY `room_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

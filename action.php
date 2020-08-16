@@ -87,17 +87,23 @@
 		$stmt = $connect->prepare("INSERT INTO orders (firstname,lastname,email,contact,products,amount_paid,status) VALUES(?,?,?,?,?,?,?)");
 		$stmt->bind_param('sssisss',$fname,$lname,$email,$phone,$products,$total,$status);
 		$stmt->execute();
+
 		$data .= '<div class="text-center">
 						<h1 class="display-4 mt-2 text-danger">Thank You!</h1>
 						<h2 class="text-success">Your Order Is Placed Successfully!</h2>
+						<h2 class="text-danger">Admin Will Contact You When Your Order Is Ready!</h2>
 						<h4 class="bg-info text-light rounded p-2">Items Purchased : '.$products.'</h4>
 						<h4>Your First Name: '.$fname.'</h4>
 						<h4>Your Last Name: '.$lname.'</h4>
 						<h4>Your Email: '.$email.'</h4>
 						<h4>Your Phone Number: '.$phone.'</h4>
-						<h4>Total Amount Paid: '.number_format($total,2).'</h4>
+						<h4>Total Amount Paid: '.number_format($total,2).'</h4><br>
+						<a href="index.php" class="btn btn-success btn-block">Back To Home</a>
 					</div>';
 
 		echo $data;
+
+		$stmt = $connect->prepare("DELETE FROM cart");
+		$stmt->execute();
 	}
 ?>

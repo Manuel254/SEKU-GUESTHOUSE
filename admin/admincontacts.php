@@ -84,7 +84,6 @@
 								$query = "DELETE FROM contact WHERE ID = {$id}";
 								$delete_query = mysqli_query($connect,$query);
 
-								//header("Location: admincontacts.php");
 							}
 
 							}
@@ -97,7 +96,6 @@
 								$query = "UPDATE contact SET confirm='Read'WHERE id=$id";
 								$update_contact_query = mysqli_query($connect,$query);
 
-								//header("Location: admincontacts.php");
 							}
 
 				
