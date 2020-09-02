@@ -97,7 +97,8 @@
 						<h4>Your Last Name: '.$lname.'</h4>
 						<h4>Your Email: '.$email.'</h4>
 						<h4>Your Phone Number: '.$phone.'</h4>
-						<h4>Total Amount Paid: '.number_format($total,2).'</h4><br>
+						<h4>Total Amount Paid: '.number_format($total,2).'</h4><br><br>
+						<a href="Invoices/meal.php" class="btn btn-primary align-self-center mb-1" target="_blank">Generate Invoice</a>
 						<a href="index.php" class="btn btn-success btn-block">Back To Home</a>
 					</div>';
 

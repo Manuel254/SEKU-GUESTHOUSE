@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2020 at 07:15 AM
+-- Generation Time: Sep 02, 2020 at 03:59 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `id` int(10) UNSIGNED NOT NULL,
   `usname` varchar(30) DEFAULT NULL,
-  `pass` varchar(30) DEFAULT NULL
+  `pass` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `usname`, `pass`) VALUES
-(1, 'sekuAdmin1', 'passseku');
+(2, 'sekuAdmin', '$2y$10$lCAo48itM43WtTn99voe0uqRlfQfIjY8woG3AbGCp9S5fkzh42wlq');
 
 -- --------------------------------------------------------
 
@@ -156,36 +156,39 @@ CREATE TABLE `rooms` (
   `room_cat` text NOT NULL,
   `checkin` date NOT NULL,
   `checkout` date NOT NULL,
+  `roomprice` float NOT NULL,
+  `amount` int(11) NOT NULL,
   `name` text NOT NULL,
   `phone` int(100) NOT NULL,
-  `book` text NOT NULL
+  `book` text NOT NULL,
+  `days` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `rooms`
 --
 
-INSERT INTO `rooms` (`room_id`, `room_cat`, `checkin`, `checkout`, `name`, `phone`, `book`) VALUES
-(1, 'Board Room', '0000-00-00', '0000-00-00', '', 0, 'false'),
-(2, 'Board Room', '0000-00-00', '0000-00-00', '', 0, 'false'),
-(3, 'Executive Room', '0000-00-00', '0000-00-00', '', 0, 'false'),
-(4, 'Executive Room', '0000-00-00', '0000-00-00', '', 0, 'false'),
-(5, 'Executive Room', '0000-00-00', '0000-00-00', '', 0, 'false'),
-(6, 'Executive Room', '0000-00-00', '0000-00-00', '', 0, 'false'),
-(7, 'Executive Room', '0000-00-00', '0000-00-00', '', 0, 'false'),
-(8, 'Normal Room', '2020-08-15', '2020-09-15', 'Immanuel Ngumbau Kituku', 703103690, 'true'),
-(9, 'Normal Room', '2020-08-15', '2020-09-15', 'Kituku', 2147483647, 'true'),
-(10, 'Normal Room', '2020-08-15', '2020-09-15', 'Kituku', 2147483647, 'true'),
-(21, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
-(22, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
-(23, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
-(24, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
-(25, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
-(26, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
-(27, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
-(28, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
-(29, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false'),
-(30, 'Rental Rooms', '0000-00-00', '0000-00-00', '', 0, 'false');
+INSERT INTO `rooms` (`room_id`, `room_cat`, `checkin`, `checkout`, `roomprice`, `amount`, `name`, `phone`, `book`, `days`) VALUES
+(1, 'Board Room', '0000-00-00', '0000-00-00', 1000, 0, '', 0, 'false', 0),
+(2, 'Board Room', '0000-00-00', '0000-00-00', 1000, 0, '', 0, 'false', 0),
+(3, 'Executive Room', '0000-00-00', '0000-00-00', 2500, 0, '', 0, 'false', 0),
+(4, 'Executive Room', '0000-00-00', '0000-00-00', 2500, 0, '', 0, 'false', 0),
+(5, 'Executive Room', '0000-00-00', '0000-00-00', 2500, 0, '', 0, 'false', 0),
+(6, 'Executive Room', '0000-00-00', '0000-00-00', 2500, 0, '', 0, 'false', 0),
+(7, 'Executive Room', '0000-00-00', '0000-00-00', 2500, 0, '', 0, 'false', 0),
+(8, 'Normal Room', '0000-00-00', '0000-00-00', 1700, 0, '', 0, 'false', 0),
+(9, 'Normal Room', '0000-00-00', '0000-00-00', 1700, 0, '', 0, 'false', 0),
+(10, 'Normal Room', '0000-00-00', '0000-00-00', 1700, 0, '', 0, 'false', 0),
+(11, 'Rental Rooms', '0000-00-00', '0000-00-00', 200, 0, '', 0, 'false', 0),
+(12, 'Rental Rooms', '0000-00-00', '0000-00-00', 200, 0, '', 0, 'false', 0),
+(13, 'Rental Rooms', '0000-00-00', '0000-00-00', 200, 0, '', 0, 'false', 0),
+(14, 'Rental Rooms', '0000-00-00', '0000-00-00', 200, 0, '', 0, 'false', 0),
+(15, 'Rental Rooms', '0000-00-00', '0000-00-00', 200, 0, '', 0, 'false', 0),
+(16, 'Rental Rooms', '0000-00-00', '0000-00-00', 200, 0, '', 0, 'false', 0),
+(17, 'Rental Rooms', '0000-00-00', '0000-00-00', 200, 0, '', 0, 'false', 0),
+(18, 'Rental Rooms', '0000-00-00', '0000-00-00', 200, 0, '', 0, 'false', 0),
+(19, 'Rental Rooms', '0000-00-00', '0000-00-00', 200, 0, '', 0, 'false', 0),
+(20, 'Rental Rooms', '0000-00-00', '0000-00-00', 200, 0, '', 0, 'false', 0);
 
 -- --------------------------------------------------------
 
@@ -209,10 +212,10 @@ CREATE TABLE `room_category` (
 --
 
 INSERT INTO `room_category` (`roomname`, `room_qnty`, `available`, `booked`, `no_bed`, `bedtype`, `facility`, `price`) VALUES
-('Board Room', 2, 2, 0, 0, 'none', 'WiFi, Tables, and Chairs', 1000),
-('Executive Room', 5, 5, 0, 1, 'single', 'TV, WiFi, Newspaper.', 2500),
-('Normal Room', 3, 3, 0, 1, 'none', 'TV, WiFi', 1700),
-('Rental Rooms', 10, 10, 0, 1, 'single', 'WiFi, Hot shower', 200);
+('Board Room', 2, 2, 0, 0, 'none', 'Wifi, Tables, Chairs.', 1000),
+('Executive Room', 5, 5, 0, 1, 'single', 'Tv, Wifi, Newspapers.', 2500),
+('Normal Room', 3, 3, 0, 1, 'single', 'Tv, Wifi.', 1700),
+('Rental Rooms', 10, 10, 0, 1, 'single', 'Wifi, Hot shower.', 200);
 
 --
 -- Indexes for dumped tables
@@ -268,7 +271,7 @@ ALTER TABLE `room_category`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `cart`
@@ -286,7 +289,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `FOOD_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `FOOD_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -298,7 +301,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `room_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `room_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -71,9 +71,9 @@
                     <li>
                     <a href="./admincontacts.php"><i class="fa fa-phone"></i>Contacts</a>
                     </li>
-                     <li>
+                     <!-- <li>
                     <a href="./adminaccounts.php"><i class="fa fa-file-text"></i>Account</a>
-                    </li>
+                    </li> -->
                      <li>
                     <a href="./profile.php"><i class="fa fa-user"></i>  Profile</a>
                     </li>

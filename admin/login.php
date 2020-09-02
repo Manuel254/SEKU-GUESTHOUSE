@@ -9,6 +9,7 @@ include "db.php";
 if(isset($_POST['login'])){
  $usname= $_POST['usname'];
  $pass= $_POST['pass'];
+ 
 
 
 $query = "SELECT * FROM admin WHERE Usname='{$usname}'";
@@ -26,15 +27,16 @@ while($row = mysqli_fetch_array($select_query))
 		 $db_id = $row['id'];
 		 $db_username = $row['usname'];
 		 $db_password = $row['pass'];
+		 $decrypt = password_verify($pass,$db_password);
 	}
-if($usname !== $db_username && $pass !== $db_password){
+if($usname !== $db_username && $decrypt!== 1){
 	  ;
 	header("Location:adminlog.php?login?login=char");
 
 
 	
 	}
-elseif($usname == $db_username && $pass == $db_password){
+elseif($usname == $db_username && $decrypt == 1){
 	header("Location:index.php?login=success");
 	$_SESSION['usname']= $db_username;
 	$_SESSION['pass']= $db_password;

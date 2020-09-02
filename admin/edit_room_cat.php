@@ -78,6 +78,7 @@ if(isset($_REQUEST[ 'submit']))
                     <label for="bedtype">Bed Type:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                    <select name="bedtype">
                      <option value="<?php echo $row['bedtype'] ?>"><?php echo $row['bedtype'] ?></option>
+                     <option value="none">none</option>
                       <option value="single">single</option>
                       <option value="double">double</option>
                     </select>

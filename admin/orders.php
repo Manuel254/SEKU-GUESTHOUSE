@@ -61,8 +61,8 @@
                                 echo "<td>{$items}</td>";
                                 echo "<td>Ksh. {$amount}</td>";
                                 echo "<td>{$status}</td>";
-                                echo "<td><a href='orders.php?confirm={$id}' <button class='btn btn-primary confirm'> <i class='fa fa-edit'></i>Confirm</button></td>";
-                                echo "<td><button type='button' class='btn btn-danger text-white delete badge-pill'><a href='orders.php?delete={$id}' style='color:#fff;text-decoration:none;'>Delete</a></button></td>";
+                                echo "<td><a href='orders.php?confirm={$id}' class='btn btn-primary confirm' id='confirm_order'><i class='fa fa-edit'></i>Confirm</a></td>";
+                                echo "<td><button type='button' class='btn btn-danger text-white delete badge-pill' id='delete_order'><a href='orders.php?delete={$id}' style='color:#fff;text-decoration:none;'>Delete</a></button></td>";
                             echo '</tr>';
                     }
                         echo '</tbody>';
@@ -78,8 +78,7 @@
 
                                 $query = "DELETE FROM orders WHERE id = {$id}";
                                 $delete_query = mysqli_query($connect,$query);
-                        }
-
+                            }
                         }
 
                         if (isset($_GET['confirm'])) {

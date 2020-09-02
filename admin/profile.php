@@ -39,10 +39,6 @@
                         $usname = $crow['usname'];
                         $pass = $crow['pass'];
 
-                        $hashFormat="$2y$10$";
-                        $salt="izyusotrmecrasisengs22";
-                        $hash_F_and_salt=$hashFormat.$salt;
-                        $pass=crypt($pass,$hash_F_and_salt);
                          echo"<tr>
                           <td>{$id}</td>
                          <td>{$usname}</td>
@@ -117,10 +113,12 @@
                         if(isset($_POST['submit'])){
                         $usname = $_POST['username'];
                         $pass = $_POST['password'];
+
+                        $passwd=password_hash($pass,PASSWORD_DEFAULT);
                         
 
                         $sql = "INSERT INTO admin (usname,pass)";
-                        $sql .= "VALUES('$usname','$pass')";
+                        $sql .= "VALUES('$usname','$passwd')";
                         $result = mysqli_query($connect,$sql);
 
                         if(!$result){

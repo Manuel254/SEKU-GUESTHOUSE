@@ -20,10 +20,10 @@ $user=new User();
                             </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-Home"></i>  <a href="index.php">Home</a>
+                               <i class="fa fa-Home"></i>  <a href="index.php">Home</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-file"></i> Rooms
+                                <i class="fa fa-file"></i> MENU
                             </li>
                         </ol>
                     </div>
@@ -65,21 +65,21 @@ $user=new User();
                 {
                     
                     echo "
-                            <div class='row'>
+                        <div class='row'>
                             <div class='col-md-2'></div>
                             <div class='col-md-6 well'>
                                 <h4>".$row['room_cat']."</h4><hr>
                                 <h6>Checkin: ".$row['checkin']." and checkout: ".$row['checkout']."</h6>
                                 <h6>Name: ".$row['name']."</h6>
                                 <h6>Phone: ".$row['phone']."</h6>
+                                <h6>Amount: ".$row['amount']."</h6>
                                 <h6>Booking Condition: ".$row['book']."</h6>
                             </div>
                             &nbsp;&nbsp;
-                            <a href='edit_all_room.php?id=".$row['room_id']."'><button class='btn btn-primary button'>Edit</button></a>
+                            <a href='edit_all_room.php?id=".$row['room_id']."'><button class='btn btn-primary button'>Edit</button></a><br/><br/>&nbsp;&nbsp
+                            <a href='../Invoices/room.php?rid=".$row['room_id']."'><button class='btn btn-primary button'>Print</button></a>
                             </div>
                             
-                    
-                    
                          ";
                     
                     

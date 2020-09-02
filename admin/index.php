@@ -23,7 +23,7 @@
                 <!-- /.row -->
                 
 <div class="row">
-    <div class="col-lg-3 col-md-6">
+    <div class="col-lg-4 col-md-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <div class="row">
@@ -32,10 +32,10 @@
                     </div>
                     <div class="col-xs-9 text-right">
                        <?php
-                        $query="SELECT*FROM contact";
-                        $select_all_contacts= mysqli_query($connect,$query);
-                        $contact_counts= mysqli_num_rows($select_all_contacts);
-                                echo"<div class='huge'>{$contact_counts}</div>"
+                        $query="SELECT * FROM rooms WHERE book='true'";
+                        $select_booked= mysqli_query($connect,$query);
+                        $book_counts= mysqli_num_rows($select_booked);
+                                echo"<div class='huge'>{$book_counts}</div>"
                         
                         ?>
                         <div>Room Bookings</div>
@@ -51,7 +51,7 @@
             </a>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6">
+    <div class="col-lg-4 col-md-12">
         <div class="panel panel-green">
             <div class="panel-heading">
                 <div class="row">
@@ -60,17 +60,17 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <?php
-                        $query="SELECT*FROM contact";
-                        $select_all_contacts= mysqli_query($connect,$query);
-                        $contact_counts= mysqli_num_rows($select_all_contacts);
-                                echo"<div class='huge'>{$contact_counts}</div>"
+                        $query="SELECT*FROM orders";
+                        $select_all_orders= mysqli_query($connect,$query);
+                        $order_counts= mysqli_num_rows($select_all_orders);
+                                echo"<div class='huge'>{$order_counts}</div>"
                         
                         ?>
                       <div>Meal Orders</div>
                     </div>
                 </div>
             </div>
-            <a href="adminmeals.php">
+            <a href="orders.php">
                 <div class="panel-footer">
                     <span class="pull-left">View Details</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -79,7 +79,7 @@
             </a>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6">
+    <div class="col-lg-4 col-md-12">
         <div class="panel panel-yellow">
             <div class="panel-heading">
                 <div class="row">
@@ -105,34 +105,6 @@
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div> 
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="panel panel-red">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-file-text fa-5x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                      <?php
-                        $query="SELECT*FROM contact";
-                        $select_all_contacts= mysqli_query($connect,$query);
-                        $contact_counts= mysqli_num_rows($select_all_contacts);
-                                echo"<div class='huge'>{$contact_counts}</div>"
-                        
-                        ?>
-                      <div>Accounts</div>
-                    </div>
-                </div>
-            </div>
-            <a href="adminaccounts.php">
-                <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
             </a>
         </div>
     </div>
