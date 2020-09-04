@@ -23,7 +23,7 @@ $user=new User();
                                <i class="fa fa-Home"></i>  <a href="index.php">Home</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-file"></i> MENU
+                                <i class="fa fa-file"></i> BOOKED ROOMS
                             </li>
                         </ol>
                     </div>
@@ -106,6 +106,7 @@ $user=new User();
 
 
     </div>
+  </div>
+  <?php include 'includes/footer.php';?>     
 </body>
-
 </html>

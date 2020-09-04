@@ -25,23 +25,19 @@ if(isset($_REQUEST[ 'submit']))
 ?>
 
 <body>
-  <?php include 'includes/navigation.php';?>
-
-  <div id="page-wrapper">
+<?php include 'includes/navigation.php';?> 
+    <div id="page-wrapper">
             <div class="container-fluid">
-              <!-- Page heading -->
-              <div class="row">
+                <!-- Page heading -->
+                <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                        ROOMS
+                            ADMINISTRATORS
                             </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-Home"></i>  <a href="index.php">Home</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-file"></i> MENU
-                            </li>
+                          
                         </ol>
                     </div>
                 </div>
@@ -100,9 +96,8 @@ if(isset($_REQUEST[ 'submit']))
 
 
             </form>
-        </div>
+            </div>
     </div>
-
 </body>
 
 </html>

@@ -37,7 +37,7 @@ if(isset($_REQUEST[ 'submit']))
                                 <i class="fa fa-Home"></i>  <a href="index.php">Home</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-file"></i> MENU
+                                <i class="fa fa-file"></i> ADD ROOMS
                             </li>
                         </ol>
                     </div>
@@ -97,7 +97,6 @@ if(isset($_REQUEST[ 'submit']))
             </form>
         </div>
     </div>
-
+    <?php include 'includes/footer.php';?>     
 </body>
-
 </html>

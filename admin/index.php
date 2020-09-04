@@ -120,17 +120,16 @@
           ['Data', 'Count'],
           <?php
 
-          // $element_text=["roombookings","meals","contact","account"];
-          // $element_count=[$roombookings_counts,$meal_counts,$contact_counts,$account_counts];
+            $element_text=["Room bookings","Orders","Contacts"];
+            $element_count=[$book_counts,$order_counts,$contact_counts];
 
-          // for($i=0; $i<4; $i++){
-          //   // echo"['{$element_text[$i]}'".","."{$element_count[$i]}],";
-          // }
+            for($i=0; $i<3; $i++){
+                echo"['{$element_text[$i]}'".","."{$element_count[$i]}],";
+            }
 
 
 
           ?>
-     ['Contacts', 1000],
          
         ]);
 

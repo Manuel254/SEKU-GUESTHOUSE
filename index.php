@@ -242,7 +242,7 @@
 				<div class="polaroid">
 					<img class="wow rollIn data-wow-delay=" 1s src="images\seku17.jpg"/ height=250px width=300px>
 					<img class="wow rollIn data-wow-delay=" 0.6s src="images\seku26.jpg"/ height=250px width=300px>
-					<img class="wow rollIn data-wow-delay=" 0.2s src="images\wadrobe.png"/ height=250px width=300px>
+					<img class="wow rollIn data-wow-delay=" 0.2s src="images\wardrobe.jpg"/ height=250px width=300px>
 
 					<div class="container-data">
 						<h5>NORMAL ROOMS</h5>

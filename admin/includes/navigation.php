@@ -44,7 +44,7 @@
                         <a href="./index.php"><i class="fa fa-home "></i>Home</a>
                     </li>
                     <li>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#rooms"><span class="glyphicon glyphicon-bed" area-hidden="true"></span>Rooms</a>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#rooms"><i class="fa fa-bed"></i>Rooms
                         <ul id="rooms" class="collapse">
                             <li>
                                 <a href="./addroom.php">Add Room</a>
@@ -58,7 +58,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#meals"><i class="fa fa-cutlery"></i>Meals
+                        <a href="javascript:;" data-toggle="collapse" data-target="#meals"><i class="fa fa-cutlery"></i>Meals</a>
                         <ul id="meals" class="collapse">
                             <li>
                                 <a href="./meals_menu.php">Meals menu</a>

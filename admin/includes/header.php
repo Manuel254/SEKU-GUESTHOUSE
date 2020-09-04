@@ -26,7 +26,7 @@ if(!isset($_SESSION['usname'])){
     <link href="css/seku.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type='text/css'>
     <!-- Custom Fonts -->
       <link href="css/fonts/Anton-Regular.ttf" rel="stylesheet">
 
