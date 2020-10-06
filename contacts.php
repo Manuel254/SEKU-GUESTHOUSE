@@ -1,4 +1,5 @@
 <?php include 'admin/includes/db.php'?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,9 +9,9 @@
         <title>SEKU GUEST HOUSE | CONTACTS</title>
         <link rel="stylesheet" href="css/contacts_style.css">
         <link rel="stylesheet" type="text/css" href="CSS\bootstrap.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
-	    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-	
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
     </head>
         <!-- header content -->
 	<div class="container bg-white">
@@ -18,10 +19,9 @@
                 
         <img src="images\Sekulogo.png" height=100px/>
                 <div class="text-success py-3">
-         <h2 class="h1 heading-4">SEKU GUEST HOUSE</h2>
+         <h2 class="heading-4">SEKU GUEST HOUSE</h2>
                     </div class="bg-primary">
                 </div>
-
 
     
         <!-- navigation-standard menu -->
@@ -66,7 +66,7 @@
 			<div class="row">
 				<div class="contact-form col-lg-4 col-md-4 col-sm-4">
 					<h2>CONTACT FORM</h2>
-					<p2>please fill out the form below to contact us</p2>
+					<p2>Please fill out the form below to contact us</p2>
 					<form  method="post" name="sentMessage" id="contactForm" >
 							<div class="control-group form-group">
 								<label>Full Name:</label>
@@ -123,10 +123,9 @@
 			</div>
 		</div>
 		</section>
-		 <footer>
-			
-			<div class="content justify-content-center">
-	<div class="footer">
+<footer>
+	<div class="content justify-content-center">
+	<div class="row">
 	<div class="col-lg-6 col-md-6">
 	
 	<h5>CONTACTS</h5>
@@ -134,16 +133,18 @@
 	<p><i class="fas fa-phone-square-alt"></i>Tel:+254702598123</p>
 	<p><i class="fas fa-envelope"></i>info@sekuguesthouse</p>
 	</div>
-<div class="col-lg-6 col-md-6">
+<div class=" inner col-lg-6 col-md-6">
 	<h5>STAY IN TOUCH</h5>
 	<i class="fab fa-facebook"></i>
 	<i class="fab fa-twitter"></i>
 	<i class="fab fa-snapchat"></i><br>
-	<input type="email" placeholder="Subscribe for updates"><button class="btn btn-success">subscribe</button>
+	<input type="email" placeholder="Subscribe for updates"><button class="sub btn btn-success">subscribe</button>
 	</div>
 	</div>
-	<h3>SEKU GUEST HOUSE,COPYRIGHT &copy;2020</h3>
-        </footer>
+	
+	</div>
+	<h3>SEKU GUEST HOUSE,COPYRIGHT&copy;2020</h3>
+ </footer>
 	<script src="https://kit.fontawesome.com/bf257a5746.js" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

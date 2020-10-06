@@ -1,11 +1,12 @@
 <?php
       
       if(isset($_Post['send'])){
-      $to= $_post['Sender'];
-      $header= $_post['Receiver'];
-        $subject=wordwrap($_post['subject'],70);
-          $body=$_post['Response'];
-      mail($to,$header,$subject,$body);    
+            $from= $_post['Sender'];
+            $to= $_post['Receiver'];
+            $subject=wordwrap($_post['subject'],70);
+            $body=$_post['Response'];
+
+            mail($from,$header,$subject,$body);    
       }
       ?>  
 <!DOCTYPE html>
@@ -46,7 +47,7 @@
                                                 
 										<div class="form-group">
 										  <label for="comment">Response</label>
-										  <textarea name="news" class="form-control" rows="5" id="comment"></textarea>
+										  <textarea name="news" class="form-control" rows="5" id="comment" name="Response"></textarea>
                                         </div>
                     
                                         <div class="modal-footer">
